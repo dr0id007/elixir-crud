@@ -13,16 +13,19 @@ defmodule ElixirJsonWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", ElixirJsonWeb do
-    pipe_through :browser
+  # scope "/", ElixirJsonWeb do
+  #   pipe_through :browser
 
-    get "/", PageController, :index
-  end
+  #   get "/", PageController, :index
+  # end
 
   # Other scopes may use custom stacks.
-  # scope "/api", ElixirJsonWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", ElixirJsonWeb do
+    pipe_through :api
+
+    resources "/users" , UserController
+
+  end
 
   # Enables LiveDashboard only for development
   #
